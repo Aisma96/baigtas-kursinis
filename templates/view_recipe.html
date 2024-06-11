@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="view-recipe">
+    <section id="top-recipe">
+        <div>
+            <div>
+                <h2>{{ recipe.name }}</h2>
+                <p>{{ recipe.description }}</p>
+            </div>
+            <div id="prep-content">
+                <div>
+                    <h3>Preparation time</h3>
+                    <p>{{ recipe.prep_time }} min</p>
+                </div>
+                <div class="vertical"></div>
+                <div>
+                    <h3>Cook time</h3>
+                    <p>{{ recipe.cook_time }} min</p>
+                </div>
+                <div class="vertical"></div>
+                <div>
+                    <h3>Servings</h3>
+                    <p>{{ recipe.servings }} people</p>
+                </div>
+            </div>
+        </div>
+        <section class="recipes_img">
+            <img src="{{ url_for('static', filename='images/unfinished-page/51U8XKZXNfL._AC_UF894,1000_QL80_.jpg') }}" alt="">
+        </section>
+    </section>
+    
+    <section id="recipe">
+        <ul>
+            <h3>Ingredients</h3>
+            {% for ingredient in ingredients %}
+                <li>{{ ingredient.ingredients }} - {{ ingredient.quantities }} <span>g</span></li>
+            {% endfor %}
+        </ul>
+        <div class="recipes_img">
+            <img src="{{ url_for('static', filename='images/unfinished-page/51U8XKZXNfL._AC_UF894,1000_QL80_.jpg') }}" alt="">
+        </div>
+    </section>
+
+    <section id="preparation">
+        <ol>
+            <h3>Instructions</h3>
+            {{ recipe.instructions }}
+            {{ recipe.instructions }}
+        </ol>
+        <div class="recipes_img">
+            <img src="{{ url_for('static', filename='images/unfinished-page/51U8XKZXNfL._AC_UF894,1000_QL80_.jpg') }}" alt="">
+        </div>
+    </section>
+
+    <div id="nutrifacts">
+        <h3>Total Nutrition Facts</h3>
+        <p>Energy: {{ total_nutrition['Calories'] }} kcal</p>
+        <p>Protein: {{ total_nutrition['Protein'] }} g</p>
+        <p>Carbohydrate: {{ total_nutrition['Carbohydrate'] }} g</p>
+        <p>Fat: {{ total_nutrition['Fat'] }} g</p>
+    </div>
+    </section>
+</div>
+{% endblock %}
